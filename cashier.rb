@@ -40,7 +40,7 @@ class Cashier
   def pick_item
     puts "What item is being purchased?\n"
     @selection = gets.chomp
-    if @selection.to_i > 4 || /[a-zA-Z]/.match(@selection)
+    if @selection.to_i > 4 || /\D/.match(@selection)
       puts "Please enter a valid number: "
       pick_item
     end
@@ -49,6 +49,10 @@ class Cashier
   def pick_amount
     puts "How many bags?\n"
     @amount = gets.chomp
+    if @amount.to_i > 100 || /\D/.match(@amount)
+      puts "Please enter a valid number: "
+      pick_amount
+    end
   end
 
   def update_tracker
